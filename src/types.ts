@@ -3,7 +3,7 @@ export interface IRevisionState {
   total: number;
 }
 
-export interface TranslationState {
+export interface ITranslationState {
   originalMessage: string;
   translatedMessage: string;
 }
@@ -14,9 +14,18 @@ export interface IPreferenceState {
 
 export const UPDATE_REVISION = 'UPDATE_REVISION'
 
+export const UPDATE_TRANSLATION = 'UPDATE_TRANSLATION'
+
 interface IUpdateRevision {
   type: typeof UPDATE_REVISION;
   payload: IRevisionState;
 }
 
-export type RevisionTypes = IUpdateRevision
+interface IUpdateTranslation {
+  type: typeof UPDATE_TRANSLATION;
+  payload: ITranslationState;
+}
+
+export type RevisionTypes = IUpdateRevision;
+
+export type TranslationTypes = IUpdateTranslation;
