@@ -1,13 +1,15 @@
 import React from 'react';
 import Button from './components/Button';
+import RevisionControls from './components/RevisionControls';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Button>
-        Learn React
+        Translate
       </Button>
-    </div>
+      <RevisionControls />
+    </>
   );
 }
 

@@ -38,30 +38,28 @@ interface IUpdatePreference {
 
 export type ActionTypes = IUndoRevision | IRedoRevision | IUpdateTranslation | IUpdatePreference;
 
-export function undoRevision(payload: IRevisionState) {
+export function undoRevision() {
   return {
     type: UNDO_REVISION,
-    payload: payload
   };
 };
 
-export function redoRevision(payload: IRevisionState) {
+export function redoRevision() {
   return {
     type: REDO_REVISION,
-    payload: payload
   };
 };
 
 export function updateTranslation(payload: ITranslationState) {
   return {
     type: UPDATE_TRANSLATION,
-    payload: payload
+    payload: payload,
   };
 };
 
 export function updatePreference(payload: IPreferenceState) {
   return {
     type: UPDATE_PREFERENCE,
-    payload: payload
+    payload: payload,
   };
 };

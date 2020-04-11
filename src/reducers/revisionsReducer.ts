@@ -8,7 +8,7 @@ function revisionsReducer(state = initialState, action: ActionTypes): IRevisionS
   switch(action.type) {
     case UNDO_REVISION: {
       return {
-        presentIndex: state.presentIndex - 1,
+        presentIndex: state.presentIndex > 0 ? state.presentIndex - 1 : 0,
       };
     }
     case REDO_REVISION: {

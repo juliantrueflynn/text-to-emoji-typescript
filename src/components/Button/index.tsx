@@ -3,6 +3,7 @@ import styled from '@emotion/styled/macro'
 
 interface IProps {
   children: React.ReactNode;
+  onClick?: (event: React.MouseEvent) => void;
   type?: 'button' | 'submit';
 }
 
@@ -11,9 +12,9 @@ const StyledButton = styled.button`
   color: #FFF;
 `;
 
-function Button({children, type = 'button'}: IProps) {
+function Button({ children, type = 'button', onClick }: IProps) {
   return (
-    <StyledButton type={type}>
+    <StyledButton type={type} onClick={onClick}>
       {children}
     </StyledButton>
   );
