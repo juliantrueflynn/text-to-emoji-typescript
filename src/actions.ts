@@ -1,4 +1,5 @@
-export const UPDATE_REVISION = 'UPDATE_REVISION';
+export const UNDO_REVISION = 'UNDO_REVISION';
+export const REDO_REVISION = 'REDO_REVISION';
 export const UPDATE_TRANSLATION = 'UPDATE_TRANSLATION';
 export const UPDATE_PREFERENCE = 'UPDATE_PREFERENCE';
 
@@ -15,8 +16,13 @@ export interface IPreferenceState {
   skinTone: string;
 }
 
-interface IUpdateRevision {
-  readonly type: typeof UPDATE_REVISION;
+interface IUndoRevision {
+  readonly type: typeof UNDO_REVISION;
+  readonly payload: IRevisionState;
+}
+
+interface IRedoRevision {
+  readonly type: typeof REDO_REVISION;
   readonly payload: IRevisionState;
 }
 
@@ -30,11 +36,18 @@ interface IUpdatePreference {
   readonly payload: IPreferenceState;
 }
 
-export type ActionTypes = IUpdateRevision | IUpdateTranslation | IUpdatePreference;
+export type ActionTypes = IUndoRevision | IRedoRevision | IUpdateTranslation | IUpdatePreference;
 
-export function updateRevision(payload: IRevisionState) {
+export function undoRevision(payload: IRevisionState) {
   return {
-    type: UPDATE_REVISION,
+    type: UNDO_REVISION,
+    payload: payload
+  };
+};
+
+export function redoRevision(payload: IRevisionState) {
+  return {
+    type: REDO_REVISION,
     payload: payload
   };
 };
