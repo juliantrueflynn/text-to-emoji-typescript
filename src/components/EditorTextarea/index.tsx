@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from '@emotion/styled/macro'
 
 const StyledContainer = styled.div`
@@ -28,12 +28,27 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
-function Editor() {
+interface IProps {
+  onChange: (event: React.MouseEvent) => void;
+}
+
+function EditorTextarea({ onChange }: IProps) {
+  const [textareaValue, setTextareaValue] = useState('');
+
+  const handleChange = useCallback(event => {
+    setTextareaValue(event.target.value)
+    onChange(event.target.value);
+  }, [setTextareaValue, onChange]);
+
   return (
     <StyledContainer>
-      <StyledTextarea placeholder="Enter text that you want to convert to emoji" />
+      <StyledTextarea
+        placeholder="Enter text that you want to convert to emoji"
+        onChange={handleChange}
+        value={textareaValue}
+      />
     </StyledContainer>
   );
 };
 
-export default Editor;
+export default EditorTextarea;

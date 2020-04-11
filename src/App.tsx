@@ -3,8 +3,7 @@ import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled/macro'
 import Button from './components/Button';
 import RevisionControls from './components/RevisionControls';
-import Editor from './components/Editor';
-import TranslationResult from './components/TranslationResult';
+import MessagePanes from './components/MessagePanes';
 
 const globalStyles = css`
   body,
@@ -15,6 +14,7 @@ const globalStyles = css`
 
   body {
     padding-top: 40px;
+    font-size: 17px;
   }
 `;
 
@@ -51,8 +51,7 @@ function App() {
       <StyledMain>
         <StyledForm>
           <StyledContainer>
-            <Editor />
-            <TranslationResult />
+            <MessagePanes />
           </StyledContainer>
 
           <Button type="submit">

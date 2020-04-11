@@ -1,16 +1,25 @@
-import { ITranslationState, ActionTypes, UPDATE_TRANSLATION } from '../actions';
+import { ITranslationState, ActionTypes, UPDATE_TRANSLATION, ITranslationDictionary } from '../actions';
 
 const initialState: ITranslationState = {
-  originalMessage: '',
-  translatedMessage: '',
+  original: '',
+  translated: '',
+  dictionary: {},
 };
 
 function translationsReducer(state = initialState, action: ActionTypes): ITranslationState {
   switch(action.type) {
     case UPDATE_TRANSLATION: {
+      const { original, translated } = action.payload
+      const words = original.split(' ')
+
       return {
-        originalMessage: state.originalMessage,
-        translatedMessage: state.translatedMessage,
+        original,
+        translated,
+        dictionary: words.reduce((acc: ITranslationDictionary, curr: string) => {
+          acc[curr] = curr;
+
+          return acc;
+        }, {}),
       };
     }
     default:

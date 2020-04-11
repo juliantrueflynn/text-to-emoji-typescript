@@ -8,9 +8,14 @@ export interface IRevisionState {
   presentIndex: number;
 }
 
+export interface ITranslationDictionary {
+  [key: string]: string;
+}
+
 export interface ITranslationState {
-  originalMessage: string;
-  translatedMessage: string;
+  original: string;
+  translated: string;
+  dictionary?: ITranslationDictionary;
 }
 
 export interface IPreferenceState {
@@ -65,13 +70,13 @@ export function clearRevision() {
 export function updateTranslation(payload: ITranslationState) {
   return {
     type: UPDATE_TRANSLATION,
-    payload: payload,
+    payload,
   };
 };
 
 export function updatePreference(payload: IPreferenceState) {
   return {
     type: UPDATE_PREFERENCE,
-    payload: payload,
+    payload,
   };
 };

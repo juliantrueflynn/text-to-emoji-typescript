@@ -11,7 +11,7 @@ interface IProps {
 const StyledButton = styled.button`
   box-sizing: border-box;
   background-color: #00818a;
-  color: #FFF;
+  color: #DBEDF3;
   border: 0;
   outline: none;
   font-family: sans-serif;

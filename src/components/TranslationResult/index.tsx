@@ -13,10 +13,14 @@ const StyledColumn = styled.div`
   min-height: 160px;
 `;
 
-function TranslationResult() {
+interface IProps {
+  original: string;
+}
+
+function TranslationResult({ original }: IProps) {
   return (
     <StyledColumn>
-      Translation
+      {original || 'Translation'}
     </StyledColumn>
   );
 };
