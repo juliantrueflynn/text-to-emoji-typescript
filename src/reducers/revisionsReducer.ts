@@ -1,14 +1,16 @@
-import { IRevisionState, RevisionTypes } from '../types';
+import { IRevisionState, ActionTypes, UPDATE_REVISION } from '../actions';
 
 const initialState: IRevisionState = {
   presentIndex: 0,
-  total: 0,
 };
 
-function revisionsReducer(state = initialState, action: RevisionTypes): IRevisionState {
+function revisionsReducer(state = initialState, action: ActionTypes): IRevisionState {
   switch(action.type) {
-    case 'UPDATE_REVISION':
-      return state;
+    case UPDATE_REVISION: {
+      return {
+        presentIndex: state.presentIndex,
+      };
+    }
     default:
       return state;
   }
