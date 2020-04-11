@@ -5,6 +5,7 @@ interface IProps {
   children: React.ReactNode;
   onClick?: (event: React.MouseEvent) => void;
   type?: 'button' | 'submit';
+  disabled?: boolean;
 }
 
 const StyledButton = styled.button`
@@ -12,9 +13,9 @@ const StyledButton = styled.button`
   color: #FFF;
 `;
 
-function Button({ children, type = 'button', onClick }: IProps) {
+function Button({ children, type = 'button', onClick, disabled }: IProps) {
   return (
-    <StyledButton type={type} onClick={onClick}>
+    <StyledButton type={type} onClick={onClick} disabled={disabled}>
       {children}
     </StyledButton>
   );

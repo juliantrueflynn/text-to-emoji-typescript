@@ -1,23 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { undoRevision } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from '../../configureStore';
+import { undoRevision, clearRevision } from '../../actions';
 import Button from '../Button';
 
-interface IProps {
-  undoRevision: typeof undoRevision;
-}
+function RevisionControls() {
+  const dispatch = useDispatch()
+  const isDisabled = useSelector<AppState, boolean>(state => !state.revisions.presentIndex)
 
-function RevisionControls({ undoRevision }: IProps) {
   return (
     <>
-      <Button onClick={undoRevision}>
+      <Button onClick={() => dispatch(undoRevision())} disabled={isDisabled}>
         Undo
       </Button>
-      <Button>
+      <Button onClick={() => dispatch(clearRevision())} disabled={isDisabled}>
         Clear
       </Button>
     </>
   );
 };
 
-export default connect(null, { undoRevision })(RevisionControls);
+export default RevisionControls;
