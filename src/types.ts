@@ -1,3 +1,7 @@
+export const UPDATE_REVISION = 'UPDATE_REVISION';
+export const UPDATE_TRANSLATION = 'UPDATE_TRANSLATION';
+export const UPDATE_PREFERENCE = 'UPDATE_PREFERENCE';
+
 export interface IRevisionState {
   presentIndex: number;
   total: number;
@@ -12,10 +16,6 @@ export interface IPreferenceState {
   skinTone: string;
 }
 
-export const UPDATE_REVISION = 'UPDATE_REVISION'
-
-export const UPDATE_TRANSLATION = 'UPDATE_TRANSLATION'
-
 interface IUpdateRevision {
   type: typeof UPDATE_REVISION;
   payload: IRevisionState;
@@ -26,6 +26,13 @@ interface IUpdateTranslation {
   payload: ITranslationState;
 }
 
+interface IUpdatePreference {
+  type: typeof UPDATE_PREFERENCE;
+  payload: IPreferenceState;
+}
+
 export type RevisionTypes = IUpdateRevision;
 
 export type TranslationTypes = IUpdateTranslation;
+
+export type PreferenceTypes = IUpdatePreference;

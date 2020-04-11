@@ -1,4 +1,4 @@
-import { IRevisionState, UPDATE_REVISION, UPDATE_TRANSLATION, ITranslationState } from './types'
+import { IRevisionState, UPDATE_REVISION, UPDATE_TRANSLATION, ITranslationState, UPDATE_PREFERENCE, IPreferenceState } from './types'
 
 export function updateRevision(payload: IRevisionState) {
   return {
@@ -10,6 +10,13 @@ export function updateRevision(payload: IRevisionState) {
 export function updateTranslation(payload: ITranslationState) {
   return {
     type: UPDATE_TRANSLATION,
+    payload: payload
+  };
+};
+
+export function updatePreference(payload: IPreferenceState) {
+  return {
+    type: UPDATE_PREFERENCE,
     payload: payload
   };
 };
