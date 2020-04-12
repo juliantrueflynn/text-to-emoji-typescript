@@ -4,11 +4,13 @@ import { createLogger } from 'redux-logger'
 import revisionsReducer from './reducers/revisionsReducer';
 import translationsReducer from './reducers/translationsReducer';
 import preferencesReducer from './reducers/preferencesReducer';
+import messageReducer from './reducers/messageReducer';
 
 export const rootReducer = combineReducers({
   revisions: revisionsReducer,
   translations: translationsReducer,
   preferences: preferencesReducer,
+  message: messageReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

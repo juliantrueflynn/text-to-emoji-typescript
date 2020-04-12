@@ -1,38 +1,27 @@
-import { ITranslationState, ActionTypes, UPDATE_TRANSLATION, ITranslationDictionary } from '../actions';
+import { ITranslationState, ActionTypes, UPDATE_MESSAGE, ITranslationDictionary } from '../actions';
 
-const initialState: ITranslationState = {
-  original: '',
-  translated: '',
-  dictionary: {},
-};
-
-const getDictionaryFromMessage = (previousDictionary: ITranslationDictionary, words: string[]) =>
-  words.reduce((acc: ITranslationDictionary, curr: string, index: number) => {
-    if (curr) {
-      const nextWord = words[index + 1];
-      const combinationWord = curr + words[index + 1]
-      acc[curr] = curr;
-
-      if (curr && nextWord && !combinationWord) {
-        acc[combinationWord] = `${curr} ${words[index + 1]}`;
-      }
-    }
-
-    return acc;
-  }, previousDictionary)
+const initialState: ITranslationState = {};
 
 function translationsReducer(state = initialState, action: ActionTypes): ITranslationState {
   switch(action.type) {
-    case UPDATE_TRANSLATION: {
-      const { translated } = action.payload
-      const original = action.payload.original.trim();
-      const words = original.split(' ')
+    case UPDATE_MESSAGE: {
+      const content = action.payload.content.trim();
+      const words = content.split(' ')
 
-      return {
-        original,
-        translated,
-        dictionary: getDictionaryFromMessage({ ...state.dictionary }, words),
-      };
+      // TODO: setting value of hash properties to codepoint.
+      return words.reduce((acc: ITranslationDictionary, curr: string, index: number) => {
+        if (curr) {
+          const nextWord = words[index + 1];
+          const combinationWord = `${curr} ${nextWord}`
+          acc[curr] = curr;
+
+          if (curr && nextWord) {
+            acc[combinationWord] = combinationWord;
+          }
+        }
+
+        return acc;
+      }, { ...state })
     }
     default:
       return state;
