@@ -30,18 +30,17 @@ describe('clearRevision', () => {
   });
 });
 
-describe('updateTranslation', () => {
+describe('updateMessage', () => {
   it('dispatches correct shape', () => {
     const payload = {
-      original: 'some original message',
-      translated: 'some translated message',
+      content: 'some original message',
     };
     const expectedAction = {
-      type: actions.UPDATE_TRANSLATION,
+      type: actions.UPDATE_MESSAGE,
       payload,
     };
 
-    expect(actions.updateTranslation(payload)).toMatchObject(expectedAction);
+    expect(actions.updateMessage(payload)).toMatchObject(expectedAction);
   });
 });
 

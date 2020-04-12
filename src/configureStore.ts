@@ -1,15 +1,7 @@
-import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger'
-import revisionsReducer from './reducers/revisionsReducer';
-import translationsReducer from './reducers/translationsReducer';
-import preferencesReducer from './reducers/preferencesReducer';
-
-export const rootReducer = combineReducers({
-  revisions: revisionsReducer,
-  translations: translationsReducer,
-  preferences: preferencesReducer,
-});
+import rootReducer from './reducers/rootReducer';
 
 export type AppState = ReturnType<typeof rootReducer>;
 

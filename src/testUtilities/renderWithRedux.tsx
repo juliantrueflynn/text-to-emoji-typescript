@@ -2,7 +2,7 @@ import React from 'react';
 import { createStore, Store, AnyAction } from 'redux';
 import { Provider } from 'react-redux';
 import { render, RenderOptions } from '@testing-library/react';
-import { rootReducer } from '../configureStore';
+import rootReducer from '../reducers/rootReducer';
 
 type RenderWithReduxOptions = RenderOptions & {
   store?: Store<{}, AnyAction>,
