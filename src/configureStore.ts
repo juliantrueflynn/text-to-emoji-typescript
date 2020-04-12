@@ -2,13 +2,13 @@ import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger'
 import revisionsReducer from './reducers/revisionsReducer';
-import translationsReducer from './reducers/translationsReducer';
+import translationReducer from './reducers/translationReducer';
 import preferencesReducer from './reducers/preferencesReducer';
 import messageReducer from './reducers/messageReducer';
 
 export const rootReducer = combineReducers({
   revisions: revisionsReducer,
-  translations: translationsReducer,
+  translation: translationReducer,
   preferences: preferencesReducer,
   message: messageReducer,
 });

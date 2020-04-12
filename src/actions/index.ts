@@ -13,7 +13,8 @@ export interface ITranslationDictionary {
 }
 
 export interface ITranslationState {
-  [key: string]: string;
+  content: string;
+  codePointsDictionary?: ITranslationDictionary;
 }
 
 export interface IMessageState {

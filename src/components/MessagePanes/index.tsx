@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateMessage, IMessageState } from '../../actions';
+import { updateMessage } from '../../actions';
 import TranslationResult from '../TranslationResult';
 import EditorTextarea from '../EditorTextarea';
 import { AppState } from '../../configureStore';
@@ -36,7 +36,7 @@ function useThrottledCallback(callback: any, delay: number): any {
 
 function MessagePanes() {
   const dispatch = useDispatch();
-  const content = useSelector<AppState, string>(state => state.message.content)
+  const content = useSelector<AppState, string>(state => state.translation.content)
 
   const throttledHandleFormChange = useThrottledCallback(
     (content: string) => dispatch(updateMessage({ content })),

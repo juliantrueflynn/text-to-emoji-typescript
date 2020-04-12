@@ -2,9 +2,9 @@ import messageReducer from './messageReducer';
 import { UPDATE_MESSAGE } from '../actions';
 
 it('responds to UPDATE_MESSAGE', () => {
-  const initialState = { 'content': '' };
+  const initialState = { content: '' };
   const examplePayload = {
-    'content': 'some message',
+    content: 'some message',
   };
   const result = messageReducer(initialState, {
     type: UPDATE_MESSAGE,
