@@ -6,20 +6,20 @@ const initialState: ITranslationState = {
   dictionary: {},
 };
 
-const getDictionaryFromMessage = (words: string[]) =>
+const getDictionaryFromMessage = (previousDictionary: ITranslationDictionary, words: string[]) =>
   words.reduce((acc: ITranslationDictionary, curr: string, index: number) => {
     if (curr) {
       const nextWord = words[index + 1];
+      const combinationWord = curr + words[index + 1]
       acc[curr] = curr;
 
-      if (curr && nextWord) {
-        const combinationWord = curr + words[index + 1]
+      if (curr && nextWord && !combinationWord) {
         acc[combinationWord] = `${curr} ${words[index + 1]}`;
       }
     }
 
     return acc;
-  }, {})
+  }, previousDictionary)
 
 function translationsReducer(state = initialState, action: ActionTypes): ITranslationState {
   switch(action.type) {
@@ -31,7 +31,7 @@ function translationsReducer(state = initialState, action: ActionTypes): ITransl
       return {
         original,
         translated,
-        dictionary: getDictionaryFromMessage(words),
+        dictionary: getDictionaryFromMessage({ ...state.dictionary }, words),
       };
     }
     default:
