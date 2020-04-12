@@ -1,24 +1,17 @@
 import React from 'react';
-import { createStore, Store, AnyAction, Action } from 'redux';
+import { createStore, Store, AnyAction } from 'redux';
 import { Provider } from 'react-redux';
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderOptions } from '@testing-library/react';
 import { rootReducer } from '../configureStore';
 
-interface IReduxOptions {
-  store?: Store<{}, AnyAction>;
+type RenderWithReduxOptions = RenderOptions & {
+  store?: Store<{}, AnyAction>,
 }
 
-interface IRenderWithRedux<S = any, A extends Action = AnyAction> {
-  (
-    ui: React.ReactElement<any>,
-    reduxOptions?: IReduxOptions
-  ): RenderResult & IReduxOptions
-}
-
-export const renderWithRedux: IRenderWithRedux = (
-  ui,
-  options = {},
-) => {
+export function renderWithRedux(
+  ui: React.ReactElement,
+  options: RenderWithReduxOptions = {},
+) {
   const store = options.store || createStore(rootReducer);
 
   return {
