@@ -14,13 +14,13 @@ const StyledColumn = styled.div`
 `;
 
 interface IProps {
-  original: string;
+  message: string;
 }
 
-function TranslationResult({ original }: IProps) {
+function TranslationResult({ message }: IProps) {
   return (
     <StyledColumn>
-      {original || 'Translation'}
+      {message || 'Translation'}
     </StyledColumn>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled/macro'
-import Button from './components/Button';
 import RevisionControls from './components/RevisionControls';
 import MessagePanes from './components/MessagePanes';
 
@@ -54,9 +53,6 @@ function App() {
             <MessagePanes />
           </StyledContainer>
 
-          <Button type="submit">
-            Translate
-          </Button>
           <RevisionControls />
         </StyledForm>
       </StyledMain>

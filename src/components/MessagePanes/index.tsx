@@ -48,7 +48,7 @@ function MessagePanes() {
   return (
     <>
       <EditorTextarea onChange={throttledHandleFormChange} />
-      <TranslationResult original={original} />
+      <TranslationResult message={original} />
     </>
   )
 }
