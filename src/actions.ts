@@ -19,7 +19,7 @@ export interface ITranslationState {
 }
 
 export interface IPreferenceState {
-  skinTone: string;
+  skinTone: number | null;
 }
 
 interface IUndoRevision {
