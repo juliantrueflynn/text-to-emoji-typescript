@@ -57,4 +57,16 @@ describe('updatePreference', () => {
 
     expect(actions.updatePreference(payload)).toMatchObject(expectedAction);
   });
+
+  it('allows null value for :skinTone', () => {
+    const payload = {
+      skinTone: null,
+    };
+    const expectedAction = {
+      type: actions.UPDATE_PREFERENCE,
+      payload,
+    };
+
+    expect(actions.updatePreference(payload)).toMatchObject(expectedAction);
+  });
 });
