@@ -5,7 +5,7 @@ import revisionsReducer from './reducers/revisionsReducer';
 import translationsReducer from './reducers/translationsReducer';
 import preferencesReducer from './reducers/preferencesReducer';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   revisions: revisionsReducer,
   translations: translationsReducer,
   preferences: preferencesReducer,
