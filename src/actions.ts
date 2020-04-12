@@ -24,17 +24,14 @@ export interface IPreferenceState {
 
 interface IUndoRevision {
   readonly type: typeof UNDO_REVISION;
-  readonly payload: IRevisionState;
 }
 
 interface IRedoRevision {
   readonly type: typeof REDO_REVISION;
-  readonly payload: IRevisionState;
 }
 
 interface IClearRevision {
   readonly type: typeof CLEAR_REVISION;
-  readonly payload: IRevisionState;
 }
 
 interface IUpdateTranslation {
