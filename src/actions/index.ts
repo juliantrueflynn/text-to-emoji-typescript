@@ -13,7 +13,7 @@ export interface ITranslationDictionary {
 }
 
 export interface ITranslationState {
-  content: string;
+  contentParts?: string[];
   codePointsDictionary?: ITranslationDictionary;
 }
 

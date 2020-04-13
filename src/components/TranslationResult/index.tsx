@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled/macro'
+import { ITranslationState } from '../../actions';
 
 const StyledColumn = styled.div`
   box-sizing: border-box;
@@ -13,14 +14,10 @@ const StyledColumn = styled.div`
   min-height: 160px;
 `;
 
-interface IProps {
-  message: string;
-}
-
-function TranslationResult({ message }: IProps) {
+function TranslationResult({ contentParts = [], codePointsDictionary = {} }: ITranslationState) {
   return (
     <StyledColumn>
-      {message || 'Translation'}
+      {contentParts.join(' ') || 'Translation'}
     </StyledColumn>
   );
 };

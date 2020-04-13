@@ -7,14 +7,14 @@ it('responds to UPDATE_MESSAGE', () => {
     codePointsDictionary: {},
   };
   const examplePayload = {
-    'content': 'foobar'
+    content: 'foobar'
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foobar',
+    contentParts: ['foobar'],
     codePointsDictionary: { 'foobar': 'foobar' },
   };
 
@@ -23,7 +23,7 @@ it('responds to UPDATE_MESSAGE', () => {
 
 it('decorates with :content value', () => {
   const initialState = {
-    content: 'foo',
+    contentParts: ['foo'],
     codePointsDictionary: {},
   };
   const examplePayload = {
@@ -34,7 +34,7 @@ it('decorates with :content value', () => {
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foo bar foo',
+    contentParts: ['foo', 'bar', 'foo'],
     codePointsDictionary: {
       'foo': 'foo',
       'bar': 'bar',
@@ -46,7 +46,7 @@ it('decorates with :content value', () => {
 
 it('does not override earlier value with combination string', () => {
   const initialState = {
-    content: 'foobar',
+    contentParts: ['foobar'],
     codePointsDictionary: { 'foo': 'foo' },
   };
   const examplePayload = {
@@ -57,7 +57,7 @@ it('does not override earlier value with combination string', () => {
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foo bar foo',
+    contentParts: ['foo', 'bar', 'foo'],
     codePointsDictionary: {
       'bar': 'bar',
       'foo': 'foo',
