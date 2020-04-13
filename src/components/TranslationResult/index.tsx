@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from '@emotion/styled/macro'
+import { ITranslationState } from '../../actions';
 
 const StyledColumn = styled.div`
   box-sizing: border-box;
@@ -13,14 +14,29 @@ const StyledColumn = styled.div`
   min-height: 160px;
 `;
 
-interface IProps {
-  message: string;
+function codePointToUnicode(input: string | undefined): string | null {
+  if (input) {
+    const integerInput = input.split('-').map(bit => parseInt(bit, 16));
+
+    return String.fromCodePoint(...integerInput);
+  }
+
+  return null;
 }
 
-function TranslationResult({ message }: IProps) {
+function TranslationResult({ contentParts = [], codePointsDictionary = {} }: ITranslationState) {
+  if (!contentParts.length) {
+    return <StyledColumn>Translation</StyledColumn>;
+  }
+
   return (
     <StyledColumn>
-      {message || 'Translation'}
+      {contentParts.map((part, index) => {
+        const unicode = codePointToUnicode(codePointsDictionary[part]);
+        const text = unicode || part;
+
+        return <Fragment key={text + index}>{' '}{text}</Fragment>;
+      })}
     </StyledColumn>
   );
 };

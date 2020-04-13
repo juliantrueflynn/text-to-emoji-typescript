@@ -7,61 +7,58 @@ it('responds to UPDATE_MESSAGE', () => {
     codePointsDictionary: {},
   };
   const examplePayload = {
-    'content': 'foobar'
+    content: 'foobar'
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foobar',
-    codePointsDictionary: { 'foobar': 'foobar' },
+    contentParts: ['foobar'],
+    codePointsDictionary: {},
   };
 
   expect(result).toMatchObject(expectedState);
 });
 
-it('decorates with :content value', () => {
+it('decorates with :contentParts value if matches emoji', () => {
   const initialState = {
-    content: 'foo',
+    contentParts: ['foobar'],
     codePointsDictionary: {},
   };
   const examplePayload = {
-    content: 'foo bar foo',
+    content: 'hi smiley',
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foo bar foo',
+    contentParts: ['hi', 'smiley'],
     codePointsDictionary: {
-      'foo': 'foo',
-      'bar': 'bar',
+      'smiley': '1f603',
     }
   };
 
   expect(result).toMatchObject(expectedState);
 });
 
-it('does not override earlier value with combination string', () => {
+it('decorates with :contentParts and passes special characters', () => {
   const initialState = {
-    content: 'foobar',
-    codePointsDictionary: { 'foo': 'foo' },
+    contentParts: [],
+    codePointsDictionary: {},
   };
   const examplePayload = {
-    content: 'foo bar foo',
+    content: 'hi smiley.',
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
     payload: examplePayload
   });
   const expectedState = {
-    content: 'foo bar foo',
+    contentParts: ['hi', 'smiley.'],
     codePointsDictionary: {
-      'bar': 'bar',
-      'foo': 'foo',
-      'foo bar': 'foo bar',
+      'smiley.': '1f603',
     },
   };
 

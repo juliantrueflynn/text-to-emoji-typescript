@@ -5,23 +5,29 @@ import TranslationResult from '.';
 const DESCRIBED_DEFAULT_MESSAGE = 'Translation';
 
 test('renders "Translation" if message empty', () => {
-  const { getByText } = render(<TranslationResult message="" />);
+  const { getByText } = render(
+    <TranslationResult contentParts={[]} codePointsDictionary={{}} />
+  );
   const result = getByText(DESCRIBED_DEFAULT_MESSAGE);
 
   expect(result).toBeInTheDocument();
 });
 
 test('renders message given if not empty', () => {
-  const exampleText = 'Some result text'
-  const { getByText } = render(<TranslationResult message={exampleText} />);
-  const result = getByText(exampleText);
+  const exampleText = ['Some', 'result', 'text'];
+  const { getByText } = render(
+    <TranslationResult contentParts={exampleText} codePointsDictionary={{}} />
+  );
+  const result = getByText(exampleText.join(' '));
 
   expect(result).toBeInTheDocument();
 });
 
 test('does not render default message if message given', () => {
-  const exampleText = 'Some result text'
-  const { container } = render(<TranslationResult message={exampleText} />);
+  const exampleText = ['Some', 'result', 'text'];
+  const { container } = render(
+    <TranslationResult contentParts={exampleText} codePointsDictionary={{}} />
+  );
   const result = queryByText(container, DESCRIBED_DEFAULT_MESSAGE);
 
   expect(result).not.toBeInTheDocument();
