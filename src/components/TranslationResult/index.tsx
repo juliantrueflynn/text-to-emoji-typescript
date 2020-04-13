@@ -16,9 +16,9 @@ const StyledColumn = styled.div`
 
 function codePointToUnicode(input: string | undefined): string | null {
   if (input) {
-    const sanitized = parseInt(input, 16);
+    const integerInput = input.split('-').map(bit => parseInt(bit, 16));
 
-    return String.fromCodePoint(sanitized);
+    return String.fromCodePoint(...integerInput);
   }
 
   return null;
