@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
 const StyledTextarea = styled.textarea`
   box-sizing: border-box;
   border: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #DBEDF3;
   padding: 18px 24px;
   background-color: transparent;

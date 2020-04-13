@@ -1,6 +1,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled/macro'
+import Header from './components/Header';
 import RevisionControls from './components/RevisionControls';
 import MessagePanes from './components/MessagePanes';
 
@@ -9,6 +10,7 @@ const globalStyles = css`
   html {
     color: #DBEDF3;
     background-color: #404b69;
+    font-family: 'Roboto', sans-serif;
   }
 
   body {
@@ -48,6 +50,7 @@ function App() {
     <>
       <Global styles={globalStyles} />
       <StyledMain>
+        <Header />
         <StyledForm>
           <StyledContainer>
             <MessagePanes />

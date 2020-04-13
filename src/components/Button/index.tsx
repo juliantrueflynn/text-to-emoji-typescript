@@ -13,8 +13,6 @@ const StyledButton = styled.button`
   background-color: #00818a;
   color: #DBEDF3;
   border: 0;
-  outline: none;
-  font-family: sans-serif;
 `;
 
 function Button({ children, type = 'button', onClick, disabled }: IProps) {

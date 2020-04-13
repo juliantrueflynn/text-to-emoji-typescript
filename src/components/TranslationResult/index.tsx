@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled from '@emotion/styled/macro'
+import styled from '@emotion/styled/macro';
 import { ITranslationState } from '../../actions';
 
 const StyledColumn = styled.div`
@@ -10,7 +10,6 @@ const StyledColumn = styled.div`
   width: 100%;
   border-left: 1px solid rgba(219, 237, 243, 0.3);
   padding: 18px 24px;
-  font-family: sans-serif;
   min-height: 160px;
 `;
 
