@@ -1,7 +1,8 @@
 import { ITranslationState, ITranslationDictionary, ActionTypes, UPDATE_MESSAGE } from '../actions';
+import EmojiDataModel from '../dataModels/EmojiDataModel';
 
 const initialState: ITranslationState = {
-  content: '',
+  contentParts: [],
   codePointsDictionary: {},
 };
 
@@ -12,20 +13,21 @@ function translationReducer(state = initialState, action: ActionTypes): ITransla
       const resultWords: string[] = [];
       const dictionary: ITranslationDictionary = {};
 
-      // TODO: setting value of hash properties and array to codepoint value.
+      const setMatchInDictionary = (query: string): string | null => {
+        const result = EmojiDataModel.get(query);
+
+        return result && (dictionary[query] = result.codePoint);
+      }
+
       words.forEach((word: string, index: number) => {
         const nextWord = words[index + 1];
-        const combinationWord = `${word} ${nextWord}`
+        const match = nextWord && setMatchInDictionary(`${word} ${nextWord}`);
+        !match && setMatchInDictionary(word);
         resultWords.push(word);
-        dictionary[word] = word;
-
-        if (nextWord) {
-          dictionary[combinationWord] = combinationWord;
-        }
-      })
+      });
 
       return {
-        content: resultWords.join(' '),
+        contentParts: resultWords,
         codePointsDictionary: dictionary,
       };
     }
