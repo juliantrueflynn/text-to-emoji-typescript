@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Global, jsx, css } from '@emotion/core';
 import MessagePanes from './components/MessagePanes';
-import RevisionControls from './components/RevisionControls';
+import CategoryFilterSelect from './components/CategoryFilterSelect';
 import { ReactComponent as GitHubIcon } from './icons/github.svg';
 import { ReactComponent as EmailIcon } from './icons/email.svg';
 
@@ -84,7 +84,7 @@ function App() {
           </a>
         </div>
 
-        <RevisionControls css={[containerStyle, { paddingTop: 10, paddingBottom: 80 }]} />
+        <CategoryFilterSelect css={[containerStyle, { paddingTop: 10, paddingBottom: 80 }]} />
       </header>
 
       <form css={containerStyle}>
