@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import translationReducer from './translationReducer';
-import preferencesReducer from './preferencesReducer';
+import categoryFiltersReducer from './categoryFiltersReducer';
 import messageReducer from './messageReducer';
 
 export default combineReducers({
   translation: translationReducer,
-  preferences: preferencesReducer,
+  preferences: categoryFiltersReducer,
   message: messageReducer,
 });

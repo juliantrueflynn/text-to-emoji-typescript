@@ -14,28 +14,16 @@ describe('updateMessage', () => {
   });
 });
 
-describe('updatePreference', () => {
+describe('updateCategoryFilter', () => {
   it('dispatches correct shape', () => {
     const payload = {
-      skinTone: 1,
+      category: actions.CategoryFilter.all,
     };
     const expectedAction = {
-      type: actions.UPDATE_PREFERENCE,
+      type: actions.UPDATE_CATEGORY_FILTER,
       payload,
     };
 
-    expect(actions.updatePreference(payload)).toMatchObject(expectedAction);
-  });
-
-  it('allows null value for :skinTone', () => {
-    const payload = {
-      skinTone: null,
-    };
-    const expectedAction = {
-      type: actions.UPDATE_PREFERENCE,
-      payload,
-    };
-
-    expect(actions.updatePreference(payload)).toMatchObject(expectedAction);
+    expect(actions.updateCategoryFilter(payload)).toMatchObject(expectedAction);
   });
 });
