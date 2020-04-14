@@ -1,6 +1,3 @@
-export const UNDO_REVISION = 'UNDO_REVISION';
-export const REDO_REVISION = 'REDO_REVISION';
-export const CLEAR_REVISION = 'CLEAR_REVISION';
 export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 export const UPDATE_PREFERENCE = 'UPDATE_PREFERENCE';
 
@@ -25,18 +22,6 @@ export interface IPreferenceState {
   skinTone: number | null;
 }
 
-interface IUndoRevision {
-  readonly type: typeof UNDO_REVISION;
-}
-
-interface IRedoRevision {
-  readonly type: typeof REDO_REVISION;
-}
-
-interface IClearRevision {
-  readonly type: typeof CLEAR_REVISION;
-}
-
 interface IUpdateMessage {
   readonly type: typeof UPDATE_MESSAGE;
   readonly payload: IMessageState;
@@ -47,25 +32,7 @@ interface IUpdatePreference {
   readonly payload: IPreferenceState;
 }
 
-export type ActionTypes = IUndoRevision | IRedoRevision | IClearRevision | IUpdateMessage | IUpdatePreference;
-
-export function undoRevision() {
-  return {
-    type: UNDO_REVISION,
-  };
-};
-
-export function redoRevision() {
-  return {
-    type: REDO_REVISION,
-  };
-};
-
-export function clearRevision() {
-  return {
-    type: CLEAR_REVISION,
-  };
-};
+export type ActionTypes = IUpdateMessage | IUpdatePreference;
 
 export function updateMessage(payload: IMessageState) {
   return {

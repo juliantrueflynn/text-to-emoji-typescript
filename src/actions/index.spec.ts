@@ -1,35 +1,5 @@
 import * as actions from '.';
 
-describe('undoRevision', () => {
-  it('undoRevision dispatches correct shape', () => {
-    const expectedAction = {
-      type: actions.UNDO_REVISION,
-    };
-
-    expect(actions.undoRevision()).toMatchObject(expectedAction);
-  });
-});
-
-describe('redoRevision', () => {
-  it('redoRevision dispatches correct shape', () => {
-    const expectedAction = {
-      type: actions.REDO_REVISION,
-    };
-
-    expect(actions.redoRevision()).toMatchObject(expectedAction);
-  });
-});
-
-describe('clearRevision', () => {
-  it('clearRevision dispatches correct shape', () => {
-    const expectedAction = {
-      type: actions.CLEAR_REVISION,
-    };
-
-    expect(actions.clearRevision()).toMatchObject(expectedAction);
-  });
-});
-
 describe('updateMessage', () => {
   it('dispatches correct shape', () => {
     const payload = {
