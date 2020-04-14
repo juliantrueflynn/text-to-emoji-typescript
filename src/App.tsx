@@ -1,65 +1,96 @@
-import React from 'react';
-import { Global, css } from '@emotion/core';
-import styled from '@emotion/styled/macro'
-import Header from './components/Header';
-import RevisionControls from './components/RevisionControls';
+/** @jsx jsx */
+import { Global, jsx, css } from '@emotion/core';
 import MessagePanes from './components/MessagePanes';
+import RevisionControls from './components/RevisionControls';
+import { ReactComponent as GitHubIcon } from './icons/github.svg';
+import { ReactComponent as EmailIcon } from './icons/email.svg';
 
 const globalStyles = css`
+  html {
+    box-sizing: border-box;
+  }
+
   body,
   html {
     color: #DBEDF3;
     background-color: #404b69;
     font-family: 'Roboto', sans-serif;
-  }
-
-  body {
-    padding-top: 40px;
     font-size: 17px;
   }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 `;
 
-const StyledMain = styled.main`
-  box-sizing: border-box;
-  max-width: 1248px;
-  width: 100%;
+const containerStyle = css`
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 30px 24px;
+  padding-left: 18px;
+  padding-right: 18px;
 `;
 
-const StyledForm = styled.form`
-  box-sizing: border-box;
-  width: 100%;
-`;
-
-const StyledContainer = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid rgba(219, 237, 243, 0.3);
-  border-radius: 12px;
+const navBarStyle = css`
   background-color: #283149;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
+  padding: 10px 0;
+
+  @media (min-width: 576px) {
+    display: flex;
+    padding: 0;
+  }
 `;
+
+const linkStyle = css`
+  display: flex;
+  align-items: center;
+  color: rgba(219, 237, 243, 0.7);
+  padding: 12px;
+  margin: 0 12px;
+  text-decoration: none;
+`;
+
+const iconStyle = css`
+  height: 24px;
+  width: 24px;
+  margin-right: 7px;
+`
 
 function App() {
   return (
-    <>
+    <main>
       <Global styles={globalStyles} />
-      <StyledMain>
-        <Header />
-        <StyledForm>
-          <StyledContainer>
-            <MessagePanes />
-          </StyledContainer>
 
-          <RevisionControls />
-        </StyledForm>
-      </StyledMain>
-    </>
+      <header css={{ marginBottom: -70, backgroundColor: 'rgba(40, 49, 73, 0.7)' }}>
+        <div css={navBarStyle}>
+          <a href="/" css={[linkStyle, { marginRight: 'auto', fontWeight: 700 }]}>
+            Text to Emoji
+          </a>
+
+          <a href="mailto:hello@juliantrueflynn.com" css={linkStyle}>
+            <EmailIcon css={iconStyle} />
+            hello@juliantrueflynn.com
+          </a>
+
+          <a
+            href="https://github.com/juliantrueflynn/text-to-emoji-typescript"
+            target="_blank"
+            rel="noopener noreferrer"
+            css={linkStyle}
+          >
+            <GitHubIcon css={iconStyle} />
+            GitHub
+          </a>
+        </div>
+
+        <RevisionControls css={[containerStyle, { paddingTop: 10, paddingBottom: 80 }]} />
+      </header>
+
+      <form css={containerStyle}>
+        <MessagePanes />
+      </form>
+    </main>
   );
 }
 

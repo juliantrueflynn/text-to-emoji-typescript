@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const StyledButton = styled.button`
-  box-sizing: border-box;
   background-color: #00818a;
   color: #DBEDF3;
   border: 0;

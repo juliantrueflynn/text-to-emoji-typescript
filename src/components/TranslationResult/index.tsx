@@ -3,14 +3,18 @@ import styled from '@emotion/styled/macro';
 import { ITranslationState } from '../../actions';
 
 const StyledColumn = styled.div`
-  box-sizing: border-box;
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
   width: 100%;
-  border-left: 1px solid rgba(219, 237, 243, 0.3);
-  padding: 18px 24px;
   min-height: 160px;
+  padding: 18px 24px;
+  border-top: 1px solid rgba(219, 237, 243, 0.3);
+
+  @media (min-width: 768px) {
+    border-top: 0;
+    border-left: 1px solid rgba(219, 237, 243, 0.3);
+  }
 `;
 
 function codePointToUnicode(input: string | undefined): string | null {
