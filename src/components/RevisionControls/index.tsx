@@ -1,23 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from '../../configureStore';
-import { undoRevision, clearRevision } from '../../actions';
 import Button from '../Button';
 
 type Props = {
   className?: string;
 }
 
+// TODO: Change this to a component for filters
 function RevisionControls({ className }: Props) {
-  const dispatch = useDispatch()
-  const isDisabled = useSelector<AppState, boolean>(state => !state.revisions.presentIndex)
-
   return (
     <div className={className}>
-      <Button onClick={() => dispatch(undoRevision())} disabled={isDisabled}>
+      <Button>
         Undo
       </Button>
-      <Button onClick={() => dispatch(clearRevision())} disabled={isDisabled}>
+      <Button>
         Clear
       </Button>
     </div>
