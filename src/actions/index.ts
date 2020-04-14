@@ -1,8 +1,16 @@
 export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
-export const UPDATE_PREFERENCE = 'UPDATE_PREFERENCE';
+export const UPDATE_CATEGORY_FILTER = 'UPDATE_CATEGORY_FILTER';
 
-export interface IRevisionState {
-  presentIndex: number;
+export enum CategoryFilter {
+  all = 'all',
+  smileysAndPeople = 'smileysAndPeople',
+  animalsAndNature = 'animalsAndNature',
+  foodAndDrink = 'foodAndDrink',
+  activity = 'activity',
+  travelAndPlaces = 'travelAndPlaces',
+  objects = 'objects',
+  symbols = 'symbols',
+  flags = 'flags',
 }
 
 export interface ITranslationDictionary {
@@ -18,8 +26,8 @@ export interface IMessageState {
   content: string;
 }
 
-export interface IPreferenceState {
-  skinTone: number | null;
+export interface ICategoryFilterState {
+  category: CategoryFilter;
 }
 
 interface IUpdateMessage {
@@ -27,12 +35,12 @@ interface IUpdateMessage {
   readonly payload: IMessageState;
 }
 
-interface IUpdatePreference {
-  readonly type: typeof UPDATE_PREFERENCE;
-  readonly payload: IPreferenceState;
+interface IUpdateCategoryFilter {
+  readonly type: typeof UPDATE_CATEGORY_FILTER;
+  readonly payload: ICategoryFilterState;
 }
 
-export type ActionTypes = IUpdateMessage | IUpdatePreference;
+export type ActionTypes = IUpdateMessage | IUpdateCategoryFilter;
 
 export function updateMessage(payload: IMessageState) {
   return {
@@ -41,9 +49,9 @@ export function updateMessage(payload: IMessageState) {
   };
 };
 
-export function updatePreference(payload: IPreferenceState) {
+export function updateCategoryFilter(payload: ICategoryFilterState) {
   return {
-    type: UPDATE_PREFERENCE,
+    type: UPDATE_CATEGORY_FILTER,
     payload,
   };
 };
