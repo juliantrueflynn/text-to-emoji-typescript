@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from '@emotion/styled/macro';
 import { ITranslationState } from '../../actions';
+import TranslationResultItem from '../TranslationResultItem';
 
 const StyledColumn = styled.div`
   flex-basis: 0;
@@ -17,16 +18,6 @@ const StyledColumn = styled.div`
   }
 `;
 
-function codePointToUnicode(input: string | undefined): string | null {
-  if (input) {
-    const integerInput = input.split('-').map(bit => parseInt(bit, 16));
-
-    return String.fromCodePoint(...integerInput);
-  }
-
-  return null;
-}
-
 function TranslationResult({ contentParts = [], codePointsDictionary = {} }: ITranslationState) {
   if (!contentParts.length) {
     return <StyledColumn>Translation</StyledColumn>;
@@ -34,12 +25,13 @@ function TranslationResult({ contentParts = [], codePointsDictionary = {} }: ITr
 
   return (
     <StyledColumn>
-      {contentParts.map((part, index) => {
-        const unicode = codePointToUnicode(codePointsDictionary[part]);
-        const text = unicode || part;
-
-        return <Fragment key={text + index}>{' '}{text}</Fragment>;
-      })}
+      {contentParts.map((word, index) =>
+        <TranslationResultItem
+          key={word + index}
+          dictionaryMatch={codePointsDictionary[word]}
+          word={word}
+        />
+      )}
     </StyledColumn>
   );
 };
