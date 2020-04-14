@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import styled from '@emotion/styled/macro';
 
 const StyledContainer = styled.div`
-  box-sizing: border-box;
   width: 100%;
   position: relative;
   flex-basis: 0;
@@ -12,9 +11,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledTextarea = styled.textarea`
-  box-sizing: border-box;
   border: 0;
-  font-family: sans-serif;
   color: #DBEDF3;
   padding: 18px 24px;
   background-color: transparent;

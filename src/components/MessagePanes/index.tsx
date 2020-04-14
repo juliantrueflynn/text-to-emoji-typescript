@@ -1,11 +1,27 @@
 import React, { useRef, useEffect, useCallback } from 'react';
+import styled from '@emotion/styled/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateMessage, ITranslationState } from '../../actions';
 import TranslationResult from '../TranslationResult';
 import EditorTextarea from '../EditorTextarea';
 import { AppState } from '../../configureStore';
 
-function useThrottledCallback(callback: any, delay: number): any {
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(219, 237, 243, 0.3);
+  border-radius: 12px;
+  background-color: #283149;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+`;
+
+const useThrottledCallback = (callback: any, delay: number): any => {
   const timeoutRef = useRef<number>();
   const callbackRef = useRef(callback);
   const lastCalledRef = useRef(0);
@@ -19,7 +35,7 @@ function useThrottledCallback(callback: any, delay: number): any {
   return useCallback((value: string) => {
     window.clearTimeout(timeoutRef.current);
 
-    function invoke() {
+    const invoke = () => {
       callbackRef.current(value);
       lastCalledRef.current = Date.now();
     }
@@ -44,10 +60,10 @@ function MessagePanes() {
   );
 
   return (
-    <>
+    <StyledContainer>
       <EditorTextarea onChange={throttledHandleFormChange} />
       <TranslationResult contentParts={contentParts} codePointsDictionary={codePointsDictionary} />
-    </>
+    </StyledContainer>
   )
 }
 

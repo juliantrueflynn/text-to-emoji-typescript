@@ -4,19 +4,23 @@ import { AppState } from '../../configureStore';
 import { undoRevision, clearRevision } from '../../actions';
 import Button from '../Button';
 
-function RevisionControls() {
+type Props = {
+  className?: string;
+}
+
+function RevisionControls({ className }: Props) {
   const dispatch = useDispatch()
   const isDisabled = useSelector<AppState, boolean>(state => !state.revisions.presentIndex)
 
   return (
-    <>
+    <div className={className}>
       <Button onClick={() => dispatch(undoRevision())} disabled={isDisabled}>
         Undo
       </Button>
       <Button onClick={() => dispatch(clearRevision())} disabled={isDisabled}>
         Clear
       </Button>
-    </>
+    </div>
   );
 };
 
