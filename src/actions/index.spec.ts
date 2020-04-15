@@ -15,9 +15,21 @@ describe('updateMessage', () => {
 });
 
 describe('updateCategoryFilter', () => {
-  it('dispatches correct shape', () => {
+  it('allows to be set null', () => {
     const payload = {
-      category: actions.CategoryFilter.all,
+      category: null,
+    };
+    const expectedAction = {
+      type: actions.UPDATE_CATEGORY_FILTER,
+      payload,
+    };
+
+    expect(actions.updateCategoryFilter(payload)).toMatchObject(expectedAction);
+  });
+
+  it('sets value based on enum', () => {
+    const payload = {
+      category: actions.Category.animalsAndNature,
     };
     const expectedAction = {
       type: actions.UPDATE_CATEGORY_FILTER,

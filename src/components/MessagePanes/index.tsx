@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import styled from '@emotion/styled/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateMessage, ITranslationState } from '../../actions';
+import { updateMessage, ITranslationState, CategoryFilter } from '../../actions';
 import TranslationResult from '../TranslationResult';
 import EditorTextarea from '../EditorTextarea';
 import { AppState } from '../../configureStore';
@@ -52,7 +52,9 @@ const useThrottledCallback = (callback: any, delay: number): any => {
 
 function MessagePanes() {
   const dispatch = useDispatch();
-  const { contentParts, codePointsDictionary } = useSelector<AppState, ITranslationState>(state => state.translation)
+
+  const category = useSelector<AppState, CategoryFilter>(state => state.categoryFilter.category);
+  const { contentParts, codePointsDictionary } = useSelector<AppState, ITranslationState>(state => state.translation);
 
   const throttledHandleFormChange = useThrottledCallback(
     (content: string) => dispatch(updateMessage({ content })),
@@ -62,7 +64,11 @@ function MessagePanes() {
   return (
     <StyledContainer>
       <EditorTextarea onChange={throttledHandleFormChange} />
-      <TranslationResult contentParts={contentParts} codePointsDictionary={codePointsDictionary} />
+      <TranslationResult
+        contentParts={contentParts}
+        category={category}
+        codePointsDictionary={codePointsDictionary}
+      />
     </StyledContainer>
   )
 }

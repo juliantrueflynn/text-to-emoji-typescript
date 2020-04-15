@@ -1,7 +1,7 @@
 export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 export const UPDATE_CATEGORY_FILTER = 'UPDATE_CATEGORY_FILTER';
 
-export enum CategoryFilter {
+export enum Category {
   all = 'all',
   smileysAndPeople = 'smileysAndPeople',
   animalsAndNature = 'animalsAndNature',
@@ -13,8 +13,10 @@ export enum CategoryFilter {
   flags = 'flags',
 }
 
+export type CategoryFilter = Exclude<Category, Category.all> | null;
+
 export interface ITranslationDictionary {
-  [key: string]: string;
+  [key: string]: string[];
 }
 
 export interface ITranslationState {
@@ -27,7 +29,7 @@ export interface IMessageState {
 }
 
 export interface ICategoryFilterState {
-  category: CategoryFilter;
+  category: CategoryFilter | Category.all;
 }
 
 interface IUpdateMessage {
