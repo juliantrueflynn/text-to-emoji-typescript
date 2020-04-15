@@ -5,6 +5,6 @@ import messageReducer from './messageReducer';
 
 export default combineReducers({
   translation: translationReducer,
-  preferences: categoryFiltersReducer,
+  categoryFilter: categoryFiltersReducer,
   message: messageReducer,
 });

@@ -13,10 +13,12 @@ function translationReducer(state = initialState, action: ActionTypes): ITransla
       const resultWords: string[] = [];
       const dictionary: ITranslationDictionary = {};
 
-      const setMatchInDictionary = (query: string): string | null => {
-        const result = EmojiDataModel.get(query);
+      const setMatchInDictionary = (query: string): void => {
+        const match = EmojiDataModel.get(query);
 
-        return result && (dictionary[query] = result.codePoint);
+        if (match) {
+          dictionary[query] = [match.codePoint, match.shortcode];
+        }
       }
 
       words.forEach((word: string, index: number) => {

@@ -14,7 +14,7 @@ export enum CategoryFilter {
 }
 
 export interface ITranslationDictionary {
-  [key: string]: string;
+  [key: string]: string[];
 }
 
 export interface ITranslationState {

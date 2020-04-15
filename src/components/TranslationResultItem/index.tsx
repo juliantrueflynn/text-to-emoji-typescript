@@ -2,15 +2,16 @@ import React from 'react';
 
 type Props = {
   word: string;
-  dictionaryMatch: string | undefined;
+  dictionaryMatch?: string[];
 }
 
-function TranslationResultItem({ word, dictionaryMatch }: Props) {
+function TranslationResultItem({ word, dictionaryMatch = [] }: Props) {
+  const [codePoint] = dictionaryMatch;
   let unicode
 
   if (dictionaryMatch) {
     unicode = String.fromCodePoint(
-      ...dictionaryMatch.split('-').map(bit => parseInt(bit, 16))
+      ...codePoint.split('-').map(bit => parseInt(bit, 16))
     );
   }
 
