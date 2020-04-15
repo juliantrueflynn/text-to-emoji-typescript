@@ -36,7 +36,7 @@ it('decorates with :contentParts value if matches emoji', () => {
   const expectedState = {
     contentParts: ['hi', 'smiley'],
     codePointsDictionary: {
-      'smiley': '1f603',
+      'smiley': ['1f603', ':smiley:'],
     }
   };
 
@@ -58,7 +58,7 @@ it('decorates with :contentParts and passes special characters', () => {
   const expectedState = {
     contentParts: ['hi', 'smiley.'],
     codePointsDictionary: {
-      'smiley.': '1f603',
+      'smiley.': ['1f603', ':smiley:'],
     },
   };
 

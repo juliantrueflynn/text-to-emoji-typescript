@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateCategoryFilter, CategoryFilter } from '../../actions';
+import { updateCategoryFilter, Category } from '../../actions';
 import styled from '@emotion/styled';
 
 type Props = {
@@ -27,7 +27,7 @@ const StyledSelect = styled.select`
 function RevisionControls({ className }: Props) {
   const dispatch = useDispatch();
 
-  const selectOptions = Object.keys(CategoryFilter).map(key => {
+  const selectOptions = Object.keys(Category).map(key => {
     const label = key
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, text => text.toUpperCase())
@@ -38,17 +38,17 @@ function RevisionControls({ className }: Props) {
 
   const handleOnChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const { value } = event.target;
-    const category: CategoryFilter = CategoryFilter[value as keyof typeof CategoryFilter];
+    const category: Category = Category[value as keyof typeof Category];
     dispatch(updateCategoryFilter({ category }));
   };
 
   return (
     <div className={className}>
-      <StyledLabel htmlFor="categoryFilter">
+      <StyledLabel htmlFor="Category">
         Filter emojis
       </StyledLabel>
 
-      <StyledSelect id="categoryFilter" onChange={handleOnChange}>
+      <StyledSelect id="Category" onChange={handleOnChange}>
         {selectOptions.map(option =>
           <option value={option.value} key={option.value}>
             {option.label}

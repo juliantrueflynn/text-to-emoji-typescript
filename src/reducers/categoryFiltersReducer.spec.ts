@@ -1,12 +1,12 @@
 import categoryFiltersReducer from './categoryFiltersReducer';
-import { UPDATE_CATEGORY_FILTER, CategoryFilter } from '../actions';
+import { UPDATE_CATEGORY_FILTER, Category } from '../actions';
 
 it('responds to UPDATE_CATEGORY_FILTER', () => {
   const initialState = {
-    category: CategoryFilter.all,
+    category: null,
   };
   const examplePayload = {
-    category: CategoryFilter.smileysAndPeople,
+    category: Category.smileysAndPeople,
   };
   const result = categoryFiltersReducer(initialState, {
     type: UPDATE_CATEGORY_FILTER,

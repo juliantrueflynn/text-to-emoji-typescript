@@ -1,15 +1,20 @@
-import { ICategoryFilterState, ActionTypes, UPDATE_CATEGORY_FILTER, CategoryFilter } from '../actions';
+import { ActionTypes, UPDATE_CATEGORY_FILTER, Category, CategoryFilter } from '../actions';
 
-const initialState: ICategoryFilterState = {
-  category: CategoryFilter.all,
+type CategoryFilterStateProps = {
+  category: CategoryFilter;
+}
+
+const initialState: CategoryFilterStateProps = {
+  category: null,
 };
 
-function categoryFiltersReducer(state = initialState, action: ActionTypes): ICategoryFilterState {
+function categoryFiltersReducer(state = initialState, action: ActionTypes): CategoryFilterStateProps {
   switch(action.type) {
     case UPDATE_CATEGORY_FILTER: {
-      return {
-        category: action.payload.category,
-      };
+      const { payload } = action;
+      const category = Category.all === payload.category ? null : payload.category;
+
+      return { category };
     }
     default:
       return state;
