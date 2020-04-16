@@ -10,7 +10,7 @@ it('responds to UPDATE_CATEGORY_FILTER', () => {
   };
   const result = categoryFiltersReducer(initialState, {
     type: UPDATE_CATEGORY_FILTER,
-    payload: examplePayload
+    payload: examplePayload,
   });
 
   expect(result).toMatchObject(examplePayload);

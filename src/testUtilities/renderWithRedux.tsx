@@ -1,17 +1,17 @@
 import React from 'react';
 import { createStore, Store, AnyAction } from 'redux';
 import { Provider } from 'react-redux';
-import { render, RenderOptions } from '@testing-library/react';
+import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import rootReducer from '../reducers/rootReducer';
 
 type RenderWithReduxOptions = RenderOptions & {
-  store?: Store<{}, AnyAction>,
-}
+  store?: Store<{}, AnyAction>;
+};
 
 export function renderWithRedux(
   ui: React.ReactElement,
-  options: RenderWithReduxOptions = {},
-) {
+  options: RenderWithReduxOptions = {}
+): RenderResult & RenderWithReduxOptions {
   const store = options.store || createStore(rootReducer);
 
   return {

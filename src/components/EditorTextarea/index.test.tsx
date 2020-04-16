@@ -4,11 +4,11 @@ import EditorTextarea from '.';
 
 const DESCRIBED_LABEL_TEXT = 'Enter text that you want to convert to emoji';
 
-const mockOnChange = () => {}
-
 test('sets subject value onchange', () => {
   const exampleValue = 'Some example value';
-  const { getByLabelText } = render(<EditorTextarea onChange={mockOnChange} />);
+  const { getByLabelText } = render(
+    <EditorTextarea setDebouncedMessage={jest.fn()} />
+  );
   const subject = getByLabelText(DESCRIBED_LABEL_TEXT) as HTMLInputElement;
 
   expect(subject.value).toBe('');

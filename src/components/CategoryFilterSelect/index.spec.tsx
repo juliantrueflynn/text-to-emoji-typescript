@@ -21,10 +21,10 @@ test('renders select options', () => {
     'Objects',
     'Symbols',
     'Flags',
-  ]
+  ];
   const { container } = renderWithRedux(<CategoryFilterSelect />);
 
-  selectOptions.forEach(option => {
+  selectOptions.forEach((option) => {
     expect(getByText(container, option)).toBeInTheDocument();
-  })
+  });
 });

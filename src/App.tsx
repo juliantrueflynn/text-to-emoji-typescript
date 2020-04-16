@@ -12,7 +12,7 @@ const globalStyles = css`
 
   body,
   html {
-    color: #DBEDF3;
+    color: #dbedf3;
     background-color: #404b69;
     font-family: 'Roboto', sans-serif;
     font-size: 17px;
@@ -55,16 +55,21 @@ const iconStyle = css`
   height: 24px;
   width: 24px;
   margin-right: 7px;
-`
+`;
 
-function App() {
+const App: React.FC = () => {
   return (
     <main>
       <Global styles={globalStyles} />
 
-      <header css={{ marginBottom: -70, backgroundColor: 'rgba(40, 49, 73, 0.7)' }}>
+      <header
+        css={{ marginBottom: -70, backgroundColor: 'rgba(40, 49, 73, 0.7)' }}
+      >
         <div css={navBarStyle}>
-          <a href="/" css={[linkStyle, { marginRight: 'auto', fontWeight: 700 }]}>
+          <a
+            href="/"
+            css={[linkStyle, { marginRight: 'auto', fontWeight: 700 }]}
+          >
             Text to Emoji
           </a>
 
@@ -84,7 +89,9 @@ function App() {
           </a>
         </div>
 
-        <CategoryFilterSelect css={[containerStyle, { paddingTop: 10, paddingBottom: 80 }]} />
+        <CategoryFilterSelect
+          css={[containerStyle, { paddingTop: 10, paddingBottom: 80 }]}
+        />
       </header>
 
       <form css={containerStyle}>
@@ -92,6 +99,6 @@ function App() {
       </form>
     </main>
   );
-}
+};
 
 export default App;

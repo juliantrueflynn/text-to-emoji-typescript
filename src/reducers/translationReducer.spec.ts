@@ -7,11 +7,11 @@ it('responds to UPDATE_MESSAGE', () => {
     codePointsDictionary: {},
   };
   const examplePayload = {
-    content: 'foobar'
+    content: 'foobar',
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
-    payload: examplePayload
+    payload: examplePayload,
   });
   const expectedState = {
     contentParts: ['foobar'],
@@ -31,13 +31,13 @@ it('decorates with :contentParts value if matches emoji', () => {
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
-    payload: examplePayload
+    payload: examplePayload,
   });
   const expectedState = {
     contentParts: ['hi', 'smiley'],
     codePointsDictionary: {
-      'smiley': ['1f603', ':smiley:'],
-    }
+      smiley: ['1f603', ':smiley:'],
+    },
   };
 
   expect(result).toMatchObject(expectedState);
@@ -53,7 +53,7 @@ it('decorates with :contentParts and passes special characters', () => {
   };
   const result = translationReducer(initialState, {
     type: UPDATE_MESSAGE,
-    payload: examplePayload
+    payload: examplePayload,
   });
   const expectedState = {
     contentParts: ['hi', 'smiley.'],

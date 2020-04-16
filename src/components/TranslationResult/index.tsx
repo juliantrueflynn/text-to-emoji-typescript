@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
-import { ITranslationState, CategoryFilter } from '../../actions';
+import { TranslationState, CategoryFilter } from '../../actions';
 import TranslationResultItem from '../TranslationResultItem';
 
 type Props = {
   category: CategoryFilter;
-} & ITranslationState
+} & TranslationState;
 
 const StyledColumn = styled.div`
   flex-basis: 0;
@@ -22,21 +22,25 @@ const StyledColumn = styled.div`
   }
 `;
 
-function TranslationResult({ contentParts = [], codePointsDictionary = {}, category }: Props) {
+const TranslationResult: React.FC<Props> = ({
+  contentParts = [],
+  codePointsDictionary = {},
+  category,
+}) => {
   if (!contentParts.length) {
     return <StyledColumn>Translation</StyledColumn>;
   }
 
   return (
     <StyledColumn>
-      {contentParts.map((word, index) =>
+      {contentParts.map((word, index) => (
         <TranslationResultItem
           key={word + index}
           dictionaryMatch={codePointsDictionary[word]}
           word={word}
           category={category}
         />
-      )}
+      ))}
     </StyledColumn>
   );
 };

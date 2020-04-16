@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
 
 const StyledTextarea = styled.textarea`
   border: 0;
-  color: #DBEDF3;
+  color: #dbedf3;
   padding: 18px 24px;
   background-color: transparent;
   min-height: 160px;
@@ -31,7 +31,7 @@ const StyledScreenReadLabel = styled.label`
   height: 1px;
   padding: 0;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
@@ -41,7 +41,7 @@ const StyledScreenReadLabel = styled.label`
   :active {
     clip: auto !important;
     -webkit-clip-path: none !important;
-      clip-path: none !important;
+    clip-path: none !important;
     height: auto !important;
     margin: auto !important;
     overflow: visible !important;
@@ -50,19 +50,22 @@ const StyledScreenReadLabel = styled.label`
   }
 `;
 
-interface IProps {
-  onChange: (event: React.ChangeEvent) => void;
-}
+type Props = {
+  setDebouncedMessage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-function EditorTextarea({ onChange }: IProps) {
+const EditorTextarea: React.FC<Props> = ({ setDebouncedMessage }) => {
   const [textareaValue, setTextareaValue] = useState('');
 
   const id = 'editorTextarea';
 
-  const handleChange = useCallback(event => {
-    setTextareaValue(event.target.value)
-    onChange(event.target.value);
-  }, [setTextareaValue, onChange]);
+  const handleChange = useCallback(
+    (event) => {
+      setTextareaValue(event.target.value);
+      setDebouncedMessage(event.target.value);
+    },
+    [setTextareaValue, setDebouncedMessage]
+  );
 
   return (
     <StyledContainer>

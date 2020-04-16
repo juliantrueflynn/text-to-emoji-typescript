@@ -8,7 +8,7 @@ it('responds to UPDATE_MESSAGE', () => {
   };
   const result = messageReducer(initialState, {
     type: UPDATE_MESSAGE,
-    payload: examplePayload
+    payload: examplePayload,
   });
 
   expect(result).toMatchObject(examplePayload);
@@ -16,13 +16,13 @@ it('responds to UPDATE_MESSAGE', () => {
 
 it('sets :content property', () => {
   const newContent = 'foo bar foo';
-  const initialState = { 'content': 'Some stale content.' };
+  const initialState = { content: 'Some stale content.' };
   const result = messageReducer(initialState, {
     type: UPDATE_MESSAGE,
     payload: {
       content: newContent,
-    }
+    },
   });
 
-  expect(result).toMatchObject({ 'content': newContent });
+  expect(result).toMatchObject({ content: newContent });
 });

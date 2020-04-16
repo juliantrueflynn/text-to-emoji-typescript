@@ -1,17 +1,25 @@
-import { ITranslationState, ITranslationDictionary, ActionTypes, UPDATE_MESSAGE } from '../actions';
+import {
+  TranslationState,
+  TranslationDictionary,
+  ActionTypes,
+  UPDATE_MESSAGE,
+} from '../actions';
 import EmojiDataModel from '../dataModels/EmojiDataModel';
 
-const initialState: ITranslationState = {
+const initialState: TranslationState = {
   contentParts: [],
   codePointsDictionary: {},
 };
 
-function translationReducer(state = initialState, action: ActionTypes): ITranslationState {
-  switch(action.type) {
+function translationReducer(
+  state = initialState,
+  action: ActionTypes
+): TranslationState {
+  switch (action.type) {
     case UPDATE_MESSAGE: {
       const words: string[] = action.payload.content.trim().split(' ');
       const resultWords: string[] = [];
-      const dictionary: ITranslationDictionary = {};
+      const dictionary: TranslationDictionary = {};
 
       const setMatchInDictionary = (query: string): void => {
         const match = EmojiDataModel.get(query);
@@ -19,7 +27,7 @@ function translationReducer(state = initialState, action: ActionTypes): ITransla
         if (match) {
           dictionary[query] = [match.codePoint, match.shortcode];
         }
-      }
+      };
 
       words.forEach((word: string, index: number) => {
         const nextWord = words[index + 1];
@@ -36,6 +44,6 @@ function translationReducer(state = initialState, action: ActionTypes): ITransla
     default:
       return state;
   }
-};
+}
 
 export default translationReducer;
