@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/text-to-emoji-typescript/static/js/main.9883349f.chunk.js",
+    "main.js.map": "/text-to-emoji-typescript/static/js/main.9883349f.chunk.js.map",
+    "runtime-main.js": "/text-to-emoji-typescript/static/js/runtime-main.be0123c5.js",
+    "runtime-main.js.map": "/text-to-emoji-typescript/static/js/runtime-main.be0123c5.js.map",
+    "static/css/2.764ccc25.chunk.css": "/text-to-emoji-typescript/static/css/2.764ccc25.chunk.css",
+    "static/js/2.ca2a95c6.chunk.js": "/text-to-emoji-typescript/static/js/2.ca2a95c6.chunk.js",
+    "static/js/2.ca2a95c6.chunk.js.map": "/text-to-emoji-typescript/static/js/2.ca2a95c6.chunk.js.map",
+    "index.html": "/text-to-emoji-typescript/index.html",
+    "precache-manifest.2bbdd3395d045d9b90dad0b4b7e5db17.js": "/text-to-emoji-typescript/precache-manifest.2bbdd3395d045d9b90dad0b4b7e5db17.js",
+    "service-worker.js": "/text-to-emoji-typescript/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/text-to-emoji-typescript/static/css/2.764ccc25.chunk.css.map",
+    "static/js/2.ca2a95c6.chunk.js.LICENSE.txt": "/text-to-emoji-typescript/static/js/2.ca2a95c6.chunk.js.LICENSE.txt",
+    "static/media/email.9663e759.svg": "/text-to-emoji-typescript/static/media/email.9663e759.svg",
+    "static/media/github.f5789c95.svg": "/text-to-emoji-typescript/static/media/github.f5789c95.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be0123c5.js",
+    "static/css/2.764ccc25.chunk.css",
+    "static/js/2.ca2a95c6.chunk.js",
+    "static/js/main.9883349f.chunk.js"
+  ]
+}
