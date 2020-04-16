@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { Global, jsx, css } from '@emotion/core';
-import MessagePanes from './components/MessagePanes';
-import CategoryFilterSelect from './components/CategoryFilterSelect';
-import { ReactComponent as GitHubIcon } from './icons/github.svg';
-import { ReactComponent as EmailIcon } from './icons/email.svg';
+import MessagePanes from '../MessagePanes';
+import CategoryFilterSelect from '../CategoryFilterSelect';
+import { ReactComponent as GitHubIcon } from '../../icons/github.svg';
+import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 
 const globalStyles = css`
   html {
