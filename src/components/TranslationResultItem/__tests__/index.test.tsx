@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TranslationResultItem from '.';
-import { Category } from '../../actions';
+import TranslationResultItem from '..';
+import { Category } from '../../../actions';
 
 test('renders word with space if dictionary match undefined', () => {
   const { getByText } = render(<TranslationResultItem word={'foobar'} />);

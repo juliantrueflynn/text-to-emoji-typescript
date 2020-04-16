@@ -1,5 +1,5 @@
-import EmojiDataModel from './EmojiDataModel';
-import data from '../data/emojiData.json';
+import EmojiDataModel from '../EmojiDataModel';
+import data from '../../data/emojiData.json';
 
 describe('getAll', () => {
   it('matches JSON data', () => {

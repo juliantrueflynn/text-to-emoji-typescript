@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, queryByText } from '@testing-library/react';
-import TranslationResult from '.';
+import TranslationResult from '..';
 
 const DESCRIBED_DEFAULT_MESSAGE = 'Translation';
 

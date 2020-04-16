@@ -1,6 +1,6 @@
 import React from 'react';
-import { renderWithRedux } from '../../testUtilities/renderWithRedux';
-import MessagePanes from '.';
+import { renderWithRedux } from '../../../testUtilities/renderWithRedux';
+import MessagePanes from '..';
 
 test('renders editor', () => {
   const { getByPlaceholderText } = renderWithRedux(<MessagePanes />);
