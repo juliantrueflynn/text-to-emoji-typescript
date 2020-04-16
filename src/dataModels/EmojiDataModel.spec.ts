@@ -19,12 +19,12 @@ describe('get', () => {
       query: 'smile',
       codePoint: '1f603',
       shortcode: ':smiley:',
-    }
+    };
     const expectedShape2 = {
       query: 'smirk',
       codePoint: '1f60f',
       shortcode: ':smirk:',
-    }
+    };
 
     expect(result1).toMatchObject(expectedShape1);
     expect(result2).toEqual(expectedShape2);

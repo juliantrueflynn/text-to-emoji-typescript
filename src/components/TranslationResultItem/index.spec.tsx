@@ -4,16 +4,14 @@ import TranslationResultItem from '.';
 import { Category } from '../../actions';
 
 test('renders word with space if dictionary match undefined', () => {
-  const { getByText } = render(
-    <TranslationResultItem word={'foobar'} />
-  );
+  const { getByText } = render(<TranslationResultItem word={'foobar'} />);
   const result = getByText('foobar');
 
   expect(result).toBeInTheDocument();
 });
 
 test('renders unicode if dictionary match exists', () => {
-  const dictionaryMatch = ['1f603', ':smiley:']
+  const dictionaryMatch = ['1f603', ':smiley:'];
   const { getByText } = render(
     <TranslationResultItem word={'smiley'} dictionaryMatch={dictionaryMatch} />
   );
@@ -23,8 +21,8 @@ test('renders unicode if dictionary match exists', () => {
 });
 
 test('renders word if category does not match', () => {
-  const word = 'smiley'
-  const dictionaryMatch = ['1f603', ':smiley:']
+  const word = 'smiley';
+  const dictionaryMatch = ['1f603', ':smiley:'];
   const { getByText } = render(
     <TranslationResultItem
       word={word}
@@ -38,8 +36,8 @@ test('renders word if category does not match', () => {
 });
 
 test('renders unicode if category matches', () => {
-  const word = 'smiley'
-  const dictionaryMatch = ['1f603', ':smiley:']
+  const word = 'smiley';
+  const dictionaryMatch = ['1f603', ':smiley:'];
   const { getByText } = render(
     <TranslationResultItem
       word={word}

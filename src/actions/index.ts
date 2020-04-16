@@ -15,45 +15,43 @@ export enum Category {
 
 export type CategoryFilter = Exclude<Category, Category.all> | null;
 
-export interface ITranslationDictionary {
+export type TranslationDictionary = {
   [key: string]: string[];
-}
+};
 
-export interface ITranslationState {
+export type TranslationState = {
   contentParts?: string[];
-  codePointsDictionary?: ITranslationDictionary;
-}
+  codePointsDictionary?: TranslationDictionary;
+};
 
-export interface IMessageState {
+export type MessageState = {
   content: string;
-}
+};
 
-export interface ICategoryFilterState {
+export type CategoryFilterState = {
   category: CategoryFilter | Category.all;
-}
+};
 
-interface IUpdateMessage {
+type UpdateMessage = {
   readonly type: typeof UPDATE_MESSAGE;
-  readonly payload: IMessageState;
-}
+  readonly payload: MessageState;
+};
 
-interface IUpdateCategoryFilter {
+type UpdateCategoryFilter = {
   readonly type: typeof UPDATE_CATEGORY_FILTER;
-  readonly payload: ICategoryFilterState;
-}
-
-export type ActionTypes = IUpdateMessage | IUpdateCategoryFilter;
-
-export function updateMessage(payload: IMessageState) {
-  return {
-    type: UPDATE_MESSAGE,
-    payload,
-  };
+  readonly payload: CategoryFilterState;
 };
 
-export function updateCategoryFilter(payload: ICategoryFilterState) {
-  return {
-    type: UPDATE_CATEGORY_FILTER,
-    payload,
-  };
-};
+export type ActionTypes = UpdateMessage | UpdateCategoryFilter;
+
+export const updateMessage = (payload: MessageState): UpdateMessage => ({
+  type: UPDATE_MESSAGE,
+  payload,
+});
+
+export const updateCategoryFilter = (
+  payload: CategoryFilterState
+): UpdateCategoryFilter => ({
+  type: UPDATE_CATEGORY_FILTER,
+  payload,
+});

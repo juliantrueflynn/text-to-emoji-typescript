@@ -4,7 +4,9 @@ import MessagePanes from '.';
 
 test('renders editor', () => {
   const { getByPlaceholderText } = renderWithRedux(<MessagePanes />);
-  const result = getByPlaceholderText(/Enter text that you want to convert to emoji/);
+  const result = getByPlaceholderText(
+    /Enter text that you want to convert to emoji/
+  );
 
   expect(result).toBeInTheDocument();
 });

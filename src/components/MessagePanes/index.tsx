@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import styled from '@emotion/styled/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateMessage, ITranslationState, CategoryFilter } from '../../actions';
+import { updateMessage, TranslationState, CategoryFilter } from '../../actions';
 import TranslationResult from '../TranslationResult';
 import EditorTextarea from '../EditorTextarea';
 import { AppState } from '../../configureStore';
@@ -32,29 +32,37 @@ const useThrottledCallback = (callback: any, delay: number): any => {
 
   useEffect(() => window.clearTimeout(timeoutRef.current), [delay]);
 
-  return useCallback((value: string) => {
-    window.clearTimeout(timeoutRef.current);
+  return useCallback(
+    (value: string) => {
+      window.clearTimeout(timeoutRef.current);
 
-    const invoke = () => {
-      callbackRef.current(value);
-      lastCalledRef.current = Date.now();
-    }
+      const invoke = (): void => {
+        callbackRef.current(value);
+        lastCalledRef.current = Date.now();
+      };
 
-    const elapsed = Date.now() - lastCalledRef.current;
+      const elapsed = Date.now() - lastCalledRef.current;
 
-    if (elapsed >= delay) {
-      invoke();
-    } else {
-      timeoutRef.current = window.setTimeout(invoke, delay - elapsed);
-    }
-  }, [delay]);
-}
+      if (elapsed >= delay) {
+        invoke();
+      } else {
+        timeoutRef.current = window.setTimeout(invoke, delay - elapsed);
+      }
+    },
+    [delay]
+  );
+};
 
-function MessagePanes() {
+const MessagePanes: React.FC = () => {
   const dispatch = useDispatch();
 
-  const category = useSelector<AppState, CategoryFilter>(state => state.categoryFilter.category);
-  const { contentParts, codePointsDictionary } = useSelector<AppState, ITranslationState>(state => state.translation);
+  const category = useSelector<AppState, CategoryFilter>(
+    (state) => state.categoryFilter.category
+  );
+  const { contentParts, codePointsDictionary } = useSelector<
+    AppState,
+    TranslationState
+  >((state) => state.translation);
 
   const throttledHandleFormChange = useThrottledCallback(
     (content: string) => dispatch(updateMessage({ content })),
@@ -70,7 +78,7 @@ function MessagePanes() {
         codePointsDictionary={codePointsDictionary}
       />
     </StyledContainer>
-  )
-}
+  );
+};
 
 export default MessagePanes;
