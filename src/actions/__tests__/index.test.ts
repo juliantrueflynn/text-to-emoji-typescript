@@ -1,4 +1,4 @@
-import * as actions from '.';
+import * as actions from '..';
 
 describe('updateMessage', () => {
   it('dispatches correct shape', () => {

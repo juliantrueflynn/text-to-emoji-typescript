@@ -1,5 +1,5 @@
-import categoryFiltersReducer from './categoryFiltersReducer';
-import { UPDATE_CATEGORY_FILTER, Category } from '../actions';
+import categoryFiltersReducer from '../categoryFiltersReducer';
+import { UPDATE_CATEGORY_FILTER, Category } from '../../actions';
 
 it('responds to UPDATE_CATEGORY_FILTER', () => {
   const initialState = {

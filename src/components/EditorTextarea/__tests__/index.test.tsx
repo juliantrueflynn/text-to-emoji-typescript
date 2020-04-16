@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import EditorTextarea from '.';
+import EditorTextarea from '..';
 
 const DESCRIBED_LABEL_TEXT = 'Enter text that you want to convert to emoji';
 

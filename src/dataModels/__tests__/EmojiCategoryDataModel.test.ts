@@ -1,8 +1,8 @@
 import EmojiCategoryDataModel, {
   EmojiCategoryDataJson,
-} from './EmojiCategoryDataModel';
-import data from '../data/emojiCategoryData.json';
-import { Category } from '../actions';
+} from '../EmojiCategoryDataModel';
+import data from '../../data/emojiCategoryData.json';
+import { Category } from '../../actions';
 
 const json: EmojiCategoryDataJson = data;
 

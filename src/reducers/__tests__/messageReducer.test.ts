@@ -1,5 +1,5 @@
-import messageReducer from './messageReducer';
-import { UPDATE_MESSAGE } from '../actions';
+import messageReducer from '../messageReducer';
+import { UPDATE_MESSAGE } from '../../actions';
 
 it('responds to UPDATE_MESSAGE', () => {
   const initialState = { content: '' };

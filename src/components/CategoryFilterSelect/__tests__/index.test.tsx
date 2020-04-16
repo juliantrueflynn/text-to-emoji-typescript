@@ -1,7 +1,7 @@
 import React from 'react';
-import { renderWithRedux } from '../../testUtilities/renderWithRedux';
+import { renderWithRedux } from '../../../testUtilities/renderWithRedux';
 import { getByText } from '@testing-library/react';
-import CategoryFilterSelect from '.';
+import CategoryFilterSelect from '..';
 
 test('defaults with value "All"', () => {
   const { getByDisplayValue } = renderWithRedux(<CategoryFilterSelect />);
