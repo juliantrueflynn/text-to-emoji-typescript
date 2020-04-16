@@ -51,10 +51,10 @@ const StyledScreenReadLabel = styled.label`
 `;
 
 type Props = {
-  onChange: (event: React.ChangeEvent) => void;
+  setDebouncedMessage: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const EditorTextarea: React.FC<Props> = ({ onChange }) => {
+const EditorTextarea: React.FC<Props> = ({ setDebouncedMessage }) => {
   const [textareaValue, setTextareaValue] = useState('');
 
   const id = 'editorTextarea';
@@ -62,9 +62,9 @@ const EditorTextarea: React.FC<Props> = ({ onChange }) => {
   const handleChange = useCallback(
     (event) => {
       setTextareaValue(event.target.value);
-      onChange(event.target.value);
+      setDebouncedMessage(event.target.value);
     },
-    [setTextareaValue, onChange]
+    [setTextareaValue, setDebouncedMessage]
   );
 
   return (
